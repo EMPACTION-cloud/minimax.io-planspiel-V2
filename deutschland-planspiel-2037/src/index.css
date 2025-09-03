@@ -1,0 +1,342 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Focus styles */
+.focus\:ring-blue-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+}
+
+/* Hover effects */
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:shadow-lg:hover {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* Game-specific styles */
+.metric-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow;
+}
+
+.decision-option {
+  @apply border border-gray-200 rounded-lg p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors cursor-pointer;
+}
+
+.decision-option.selected {
+  @apply border-blue-500 bg-blue-50;
+}
+
+.party-color-indicator {
+  @apply w-3 h-3 rounded-full inline-block mr-2;
+}
+
+.grade-badge {
+  @apply px-3 py-1 rounded-full text-sm font-bold;
+}
+
+/* Notification styles */
+.notification {
+  @apply rounded-lg p-4 mb-3 border-l-4;
+}
+
+.notification.success {
+  @apply bg-green-50 border-green-400 text-green-800;
+}
+
+.notification.warning {
+  @apply bg-yellow-50 border-yellow-400 text-yellow-800;
+}
+
+.notification.error {
+  @apply bg-red-50 border-red-400 text-red-800;
+}
+
+.notification.info {
+  @apply bg-blue-50 border-blue-400 text-blue-800;
+}
+
+/* Chart styles */
+.line-chart-container {
+  @apply relative overflow-hidden;
+}
+
+.chart-tooltip {
+  @apply absolute bg-gray-800 text-white text-xs rounded px-2 py-1 pointer-events-none z-10;
+}
+
+/* Button variants */
+.btn-primary {
+  @apply bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors font-medium;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors font-medium;
+}
+
+.btn-outline {
+  @apply border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium;
+}
+
+/* Loading states */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-blue-600;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .grid-responsive {
+    @apply grid-cols-1;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .grid-responsive {
+    @apply grid-cols-2;
+  }
+}
+
+@media (min-width: 769px) {
+  .grid-responsive {
+    @apply grid-cols-3;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+  
+  body {
+    background: white !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .metric-card {
+    @apply border-2 border-gray-800;
+  }
+  
+  .decision-option {
+    @apply border-2 border-gray-800;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support (for future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Dark mode styles would go here if needed */
+}
+
+/* Custom properties for theming */
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #6b7280;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-lg: 0.75rem;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link */
+.skip-link {
+  @apply absolute top-0 left-0 bg-blue-600 text-white p-2 rounded transform -translate-y-full focus:translate-y-0 z-50 transition-transform;
+}
+
+/* Focus visible */
+.focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Game-specific status indicators */
+.status-positive {
+  @apply text-green-600 bg-green-100;
+}
+
+.status-negative {
+  @apply text-red-600 bg-red-100;
+}
+
+.status-neutral {
+  @apply text-gray-600 bg-gray-100;
+}
+
+.status-warning {
+  @apply text-yellow-600 bg-yellow-100;
+}
+
+/* Coalition stability indicators */
+.stability-high {
+  @apply text-green-600 bg-green-100 border-green-200;
+}
+
+.stability-medium {
+  @apply text-yellow-600 bg-yellow-100 border-yellow-200;
+}
+
+.stability-low {
+  @apply text-red-600 bg-red-100 border-red-200;
+}
+
+/* Progress bars */
+.progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-2;
+}
+
+.progress-fill {
+  @apply h-2 rounded-full transition-all duration-300 ease-out;
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply absolute z-50 bg-gray-800 text-white text-xs rounded px-2 py-1 pointer-events-none opacity-0 transition-opacity;
+}
+
+.tooltip.visible {
+  @apply opacity-100;
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4;
+}
+
+.modal-content {
+  @apply bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-96 overflow-y-auto;
+}
+
+/* Tab styles */
+.tab-active {
+  @apply text-blue-600 border-b-2 border-blue-600 bg-blue-50;
+}
+
+.tab-inactive {
+  @apply text-gray-600 hover:text-blue-600 hover:border-gray-300;
+}
+
+.tab-disabled {
+  @apply text-gray-400 cursor-not-allowed;
+}
